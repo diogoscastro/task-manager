@@ -3,7 +3,7 @@ const TaskModel = require("../models/task.model");
 
 const router = express.Router();
 
-router.get("/tasks", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const tasks = await TaskModel.find({});
         res.status(200).send(tasks);
@@ -12,7 +12,7 @@ router.get("/tasks", async (req, res) => {
     }
 });
 
-router.get("/tasks/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         const taskId = req.params.id;
 
@@ -28,7 +28,7 @@ router.get("/tasks/:id", async (req, res) => {
     }
 });
 
-router.post("/tasks", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const newTask = new TaskModel(req.body);
 
@@ -40,7 +40,7 @@ router.post("/tasks", async (req, res) => {
     }
 });
 
-router.patch("/tasks/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
     try {
         const taskId = req.params.id;
         const taskData = req.body;
@@ -67,7 +67,7 @@ router.patch("/tasks/:id", async (req, res) => {
     }
 });
 
-router.delete("/tasks/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
         const taskId = req.params.id;
 
